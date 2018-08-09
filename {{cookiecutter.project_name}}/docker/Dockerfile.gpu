@@ -1,0 +1,11 @@
+FROM tensorflow/tensorflow:latest-gpu-py3
+
+WORKDIR /work
+
+COPY Pipfile Pipfile.lock /work/
+
+RUN pip install pipenv && \
+    pipenv install && \
+    pipenv install tensorflow-gpu
+
+ENTRYPOINT ["/bin/bash"]
